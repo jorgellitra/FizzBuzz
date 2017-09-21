@@ -1,40 +1,42 @@
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 public class FizzBuzzTest {
 
     @Test
     public void given_2_should_return_2 (){
-        Assert.assertEquals("2", new FizzBuzz().get(2));
+        assertThat(new FizzBuzz().of(2), is("2"));
     }
     @Test
     public void given_3_should_return_3 (){
-        Assert.assertEquals("Fizz", new FizzBuzz().get(3));
+        assertThat(new FizzBuzz().of(3), is("Fizz"));
     }
     @Test
     public void given_4_should_return_4 (){
-        Assert.assertEquals("4", new FizzBuzz().get(4));
+        assertThat(new FizzBuzz().of(4), is("4"));
     }
     @Test
     public void given_5_should_return_5 (){
-        Assert.assertEquals("Buzz", new FizzBuzz().get(5));
+        assertThat(new FizzBuzz().of(5), is("Buzz"));
     }
     @Test
     public void given_15_should_return_15 (){
-        Assert.assertEquals("FizzBuzz", new FizzBuzz().get(15));
+        assertThat(new FizzBuzz().of(15), is("FizzBuzz"));
     }
 
     @Test
     public void reward (){
-        Assert.assertEquals("FizzBuzz", new FizzBuzz().get(150));
-        Assert.assertEquals("FizzBuzz", new FizzBuzz().get(1500));
-        Assert.assertEquals("1449", new FizzBuzz().get(1449));
-        Assert.assertEquals("Fizz", new FizzBuzz().get(1447));
-        Assert.assertEquals("Buzz", new FizzBuzz().get(1445));
+        assertThat(new FizzBuzz().of(150), is("FizzBuzz"));
+        assertThat(new FizzBuzz().of(1500), is("FizzBuzz"));
+        assertThat(new FizzBuzz().of(1449), is("Fizz"));
+        assertThat(new FizzBuzz().of(1447), is("1447"));
+        assertThat(new FizzBuzz().of(1445), is("Buzz"));
     }
 
     private static class FizzBuzz {
-        public String get(int position){
+        public String of(int position){
             return get(fizzOf(position) + buzzOf(position), String.valueOf(position));
         }
 
